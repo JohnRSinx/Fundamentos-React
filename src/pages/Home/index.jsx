@@ -15,7 +15,7 @@ export function Home() {
         second:"2-digit",
       }), 
     }
-
+      
     setStudents(prevState =>[...prevState , newStudent])
     
   };
@@ -24,22 +24,27 @@ export function Home() {
   
   return (
     <div className="container">
+    <header>
       <h1>Lista de Presença</h1>
-      <input 
-        type="text" 
-        placeholder="Digite o nome..."
-        onChange={e=>setStudentName(e.target.value)}
-      />
-
+      <div>
+        <strong>John Rodrigues</strong>
+        <img src="https://github.com/JohnRSinx.png" alt="Foto de perfil" />
+      </div>
+    </header>
+    <input
+      type="text"
+      placeholder="Digite o nome..."
+      onChange={(e) => setStudentName(e.target.value)}
+    />
       <button 
       type="button"
       onClick={handleAddStudent}
       >Adicionar
       </button>
 
-      { 
-        students.map(student =><Card name={student.name} time={student.time}/> )
-      }
+      {students.map((student) => (
+        <Card key={student.time} name={student.name} time={student.time} />
+      ))}
       
       
     </div>
